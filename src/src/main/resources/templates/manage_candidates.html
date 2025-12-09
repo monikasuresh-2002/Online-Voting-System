@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Candidates</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Manage Candidates</h1>
+        <nav>
+            <a th:href="@{/admin_dashboard}">Admin Dashboard</a>
+            <a th:href="@{/logout}">Logout</a>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Candidate List</h2>
+        <table border="1">
+            <tr>
+                <th>Candidate ID</th>
+                <th>Name</th>
+                <th>Party</th>
+                <th>District</th>
+                <th>Actions</th>
+            </tr>
+            <tr th:each="candidate : ${candidates}">
+                <td th:text="${candidate.candidateID}"></td>
+                <td th:text="${candidate.name}"></td>
+                <td th:text="${candidate.party.name}"></td>
+                <td th:text="${candidate.district.name}"></td>
+                <td>
+                    <a th:href="@{/edit_candidate/{id}(id=${candidate.candidateID})}">Edit</a> |
+                    <a th:href="@{/delete_candidate/{id}(id=${candidate.candidateID})}" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Add New Candidate</h2>
+        <form th:action="@{/add_candidate}" method="post">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+
+            <label>Party:</label>
+            <select name="party">
+                <option th:each="party : ${parties}" th:value="${party.partyID}" th:text="${party.name}"></option>
+            </select>
+
+            <label>District:</label>
+            <select name="district">
+                <option th:each="district : ${districts}" th:value="${district.districtID}" th:text="${district.name}"></option>
+            </select>
+
+            <button type="submit">Add Candidate</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Online Voting System. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

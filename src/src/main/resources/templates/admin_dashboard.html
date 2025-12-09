@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h2>Admin Dashboard</h2>
+    <a th:href="@{/manage_voters}">Manage Voters</a> |
+    <a th:href="@{/manage_candidates}">Manage Candidates</a> |
+    <a th:href="@{/election_summary}">Election Summary</a>
+</body>
+</html>

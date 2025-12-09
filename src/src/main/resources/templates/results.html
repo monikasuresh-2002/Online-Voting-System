@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Results</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h2>Election Results</h2>
+    <table>
+        <tr>
+            <th>Candidate</th>
+            <th>Votes</th>
+        </tr>
+        <tr th:each="result : ${results}">
+            <td th:text="${result.candidateName}"></td>
+            <td th:text="${result.voteCount}"></td>
+        </tr>
+    </table>
+</body>
+</html>

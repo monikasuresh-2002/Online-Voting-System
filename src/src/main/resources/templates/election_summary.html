@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Election Summary</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Election Summary</h1>
+        <nav>
+            <a th:href="@{/admin_dashboard}">Admin Dashboard</a>
+            <a th:href="@{/logout}">Logout</a>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Summary of the Elections</h2>
+        <table border="1">
+            <tr>
+                <th>Candidate</th>
+                <th>Party</th>
+                <th>Total Votes</th>
+            </tr>
+            <tr th:each="result : ${results}">
+                <td th:text="${result.candidateName}"></td>
+                <td th:text="${result.partyName}"></td>
+                <td th:text="${result.totalVotes}"></td>
+            </tr>
+        </table>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Online Voting System. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

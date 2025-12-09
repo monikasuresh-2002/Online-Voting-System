@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Voters</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h2>Manage Voters</h2>
+    <table>
+        <tr>
+            <th>Aadhaar</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="voter : ${voters}">
+            <td th:text="${voter.aadhaar}"></td>
+            <td th:text="${voter.firstName}"></td>
+            <td>
+                <a th:href="@{/delete_voter/{aadhaar}(aadhaar=${voter.aadhaar})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
